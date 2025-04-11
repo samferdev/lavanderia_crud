@@ -1,0 +1,6 @@
+@lavanderia_back_HostAddress = http://localhost:5024
+
+GET {{lavanderia_back_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

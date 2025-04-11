@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Login do Administrador</h1>
+    <form id="loginForm">
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" required><br><br>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" required><br><br>
+
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p id="erro" style="color: red;"></p>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const usuario = document.getElementById("usuario").value;
+            const senha = document.getElementById("senha").value;
+
+            // Autenticação simples
+            if (usuario === "admin" && senha === "1234") {
+                window.location.href = "admin.html";
+            } else {
+                document.getElementById("erro").textContent = "Usuário ou senha incorretos!";
+            }
+        });
+    </script>
+</body>
+
+</html>
