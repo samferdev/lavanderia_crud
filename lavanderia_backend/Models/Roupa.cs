@@ -3,8 +3,10 @@ namespace lavanderia_backend.Models
     public class Roupa
     {
         public int Id { get; set; }
-        public string Cliente { get; set; } = string.Empty;
-        public string Descricao { get; set; } = string.Empty;
-        public string Status { get; set; } = "Pendente";
+        public string? Tipo { get; set; }
+        public string? Cor { get; set; }
+        public bool Lavada { get; set; } = false;
+
+        public string? Status { get; set; }
     }
 }

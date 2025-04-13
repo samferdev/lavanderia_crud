@@ -11,8 +11,12 @@
     <h1>Lavanderia Nova Roupa</h1>
 
     <form id="formRoupas">
-        <input type="text" id="cliente" placeholder="Nome do cliente" required>
-        <input type="text" id="descricao" placeholder="Descrição da roupa" required>
+        <input type="text" id="tipo" placeholder="Tipo da roupa" required>
+        <input type="text" id="cor" placeholder="Cor da roupa" required>
+        <select id="status" required>
+            <option value="Sujo">Sujo</option>
+            <option value="Lavado">Lavado</option>
+        </select>
         <button type="submit">Cadastrar</button>
     </form>
 

@@ -3,15 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin - Lavanderia</title>
+    <title>Painel do Administrador</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Área do Administrador</h1>
-    <ul id="listaAdminRoupas"></ul>
+    <script>
+        if (!localStorage.getItem("token")) {
+            window.location.href = "login.html"; // Protege o acesso
+        }
+    </script>
 
-    <script src="admin.js"></script>
+    <h1>Painel do Administrador</h1>
+
+    <div id="roupasContainer">
+        <!-- Aqui vão ser exibidas as roupas -->
+    </div>
+
+    <button onclick="logout()">Sair</button>
+
+    <script>
+        async function carregarRoupas() {
+            try {
+                const resposta = await fetch("http://localhost:5024/api/roupa");
+                const roupas = await resposta.json();
+
+                const container = document.getElementById("roupasContainer");
+                container.innerHTML = "";
+
+                roupas.forEach(roupa => {
+                    const div = document.createElement("div");
+                    div.innerHTML = `
+                        <p><strong>Tipo:</strong> ${roupa.tipo}</p>
+                        <p><strong>Cor:</strong> ${roupa.cor}</p>
+                        <p><strong>Status:</strong> ${roupa.status}</p>
+                        <hr>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error("Erro ao carregar roupas:", error);
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "login.html";
+        }
+
+        carregarRoupas();
+    </script>
 </body>
 
 </html>
